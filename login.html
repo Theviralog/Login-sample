@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page</title>
+  <link rel="stylesheet" href="Login.css">
+</head>
+<body>
+  <div class="container">
+    <div class="form-container">
+      <h2>Log In</h2>
+      <button class="oauth-btn google-btn">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/768px-Google_%22G%22_logo.svg.png" alt="Google Icon" class="icon"> Continue with Google
+      </button>
+      <button class="oauth-btn apple-btn">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Apple_logo_white.svg/1724px-Apple_logo_white.svg.png" alt="Apple Icon" class="icon"> Continue with Apple
+      </button>
+      <div class="divider">
+        <span class="line"></span>
+        <span class="text">or</span>
+        <span class="line"></span>
+      </div>
+      <form id="login-form">
+        <input type="email" placeholder="Email" required>
+        <input type="password" placeholder="Password" required>
+        <a href="forgotpassword.html" class="forgot-password">Forgot Password?</a>
+        <button type="submit" class="login-btn">Log In</button>
+      </form>
+      <p class="signup-link">Don't have an account? <a href="signup.html">Sign Up</a></p>
+      <script src="Login.js"></script>
+    </div>
+  </div>
+
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-analytics.js";
+
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyDI6SbikHEKkrTn1XCNeWnbEiuz1A4Q9io",
+      authDomain: "affiliate-30f1a.firebaseapp.com",
+      projectId: "affiliate-30f1a",
+      storageBucket: "affiliate-30f1a.firebasestorage.app",
+      messagingSenderId: "949003909619",
+      appId: "1:949003909619:web:6b901578fb94c51a9fba86",
+      measurementId: "G-3FJ7NM5N10"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+
+    // Handle form submission
+    const form = document.getElementById('login-form');
+    form.addEventListener('submit', (event) => {
+      event.preventDefault(); // Prevent default form submission
+      // Validate inputs (optional)
+      const email = form.querySelector('input[type="email"]').value;
+      const password = form.querySelector('input[type="password"]').value;
+
+      if (email && password) {
+        // Redirect to dashboard.html
+        window.location.href = 'dashboard.html';
+      } else {
+        alert('Please fill in all fields!');
+      }
+    });
+  </script>
+</body>
+</html>
